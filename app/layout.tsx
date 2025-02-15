@@ -1,3 +1,5 @@
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -25,11 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}
-      >
-        {children}
-      </body>
+      <ClerkProvider appearance={{
+        baseTheme: dark,
+      }}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}
+        >
+          {children}
+        </body>
+      </ClerkProvider>
     </html>
   );
 }
