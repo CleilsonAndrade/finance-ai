@@ -1,4 +1,4 @@
-export default function Transactions() {
+export default function TransactionsPage() {
   return (
     <h1>Transacoes</h1>
   )
