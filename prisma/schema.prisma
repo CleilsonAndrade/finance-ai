@@ -23,6 +23,7 @@ model transaction {
   date          DateTime
   createdAt     DateTime                 @default(now())
   updatedAt     DateTime                 @updatedAt
+  userID        String
 }
 
 enum TransactionType {
