@@ -10,7 +10,8 @@ import {
 import { revalidatePath } from "next/cache";
 import { addTransactionSchema } from "./schema";
 
-interface addTransactionParams {
+interface upSertTransactionParams {
+  id?: string;
   name: string;
   amount: number;
   type: TransactionType;
@@ -19,7 +20,7 @@ interface addTransactionParams {
   date: Date;
 }
 
-export const addTransaction = async (params: addTransactionParams) => {
+export const upSertTransaction = async (params: upSertTransactionParams) => {
   addTransactionSchema.parse(params);
 
   const { userId } = await auth();
@@ -28,8 +29,12 @@ export const addTransaction = async (params: addTransactionParams) => {
     throw new Error("Unauthorized");
   }
 
-  await db.transaction.create({
-    data: { ...params, userID: userId },
+  await db.transaction.upsert({
+    where: {
+      id: params.id,
+    },
+    update: { ...params, userID: userId },
+    create: { ...params, userID: userId },
   });
 
   revalidatePath("/transactions");
