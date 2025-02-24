@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@radix-ui/react-select";
-import { Form, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { MoneyInput } from "./money-input";
 import { Button } from "./ui/button";
@@ -30,8 +30,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from "./ui/dialog";
 import {
+  Form,
   FormControl,
   FormField,
   FormItem,
@@ -114,6 +116,7 @@ export default function UpsertTransactionDialog({
         }
       }}
     >
+      <DialogTrigger asChild></DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
