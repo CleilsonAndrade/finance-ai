@@ -1,5 +1,5 @@
+import Navbar from "@/_components/navbar";
+
 export default function SubscriptionPage() {
-  return (
-    <h1>Inscricao</h1>
-  )
+  return <Navbar />;
 }
