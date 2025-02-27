@@ -7,8 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/_components/ui/select";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const MONTH_OPTIONS = [
   { value: "01", label: "Janeiro" },
@@ -41,12 +40,12 @@ export default function TimeSelect() {
       defaultValue={month ?? ""}
     >
       <SelectTrigger className="w-[150px] rounded-full">
-        <SelectValue placeholder="Mes" />
+        <SelectValue placeholder="Mês" />
       </SelectTrigger>
       <SelectContent>
         {MONTH_OPTIONS.map((option) => (
           <SelectItem key={option.value} value={option.value}>
-            {option.value}
+            {option.label}
           </SelectItem>
         ))}
       </SelectContent>

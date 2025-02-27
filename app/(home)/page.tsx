@@ -6,12 +6,12 @@ import SummaryCards from "./_components/summary-cards";
 import TimeSelect from "./_components/time-select";
 
 interface HomeProps {
-  searchParms: {
+  searchParams: {
     month: string;
   };
 }
 
-export default async function Home({ searchParms: { month } }: HomeProps) {
+export default async function Home({ searchParams: { month } }: HomeProps) {
   const { userId } = await auth();
 
   if (!userId) {
@@ -28,7 +28,7 @@ export default async function Home({ searchParms: { month } }: HomeProps) {
     <>
       <Navbar />
       <div className="space-y-6 p-6">
-        <div className="justify-betweenn flex">
+        <div className="flex justify-between">
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <TimeSelect />
         </div>
