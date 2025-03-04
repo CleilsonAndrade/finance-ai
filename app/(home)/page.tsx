@@ -30,6 +30,8 @@ export default async function Home({ searchParams: { month } }: HomeProps) {
 
   const dashboard = await getDashboard(month);
 
+  console.log(dashboard);
+
   return (
     <>
       <Navbar />

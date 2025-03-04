@@ -10,11 +10,14 @@ export default async function getDashboard(month: string) {
     throw new Error("Unauthorized");
   }
 
+  const now = new Date();
+  const year = now.getFullYear();
+
   const where = {
     userID: userId,
     date: {
-      gte: new Date(`2024-${month}-01`),
-      lte: new Date(`2024-${month}-31`),
+      gte: new Date(`${year}-${month}-01`),
+      lte: new Date(`${year}-${month}-31`),
     },
   };
 
@@ -29,7 +32,7 @@ export default async function getDashboard(month: string) {
           amount: true,
         },
       })
-    )?._sum.amount,
+    )?._sum.amount || 0,
   );
 
   const investmentTotal = Number(
@@ -43,7 +46,7 @@ export default async function getDashboard(month: string) {
           amount: true,
         },
       })
-    )?._sum.amount,
+    )?._sum.amount || 0,
   );
 
   const expensesTotal = Number(
@@ -57,7 +60,7 @@ export default async function getDashboard(month: string) {
           amount: true,
         },
       })
-    )?._sum.amount,
+    )?._sum.amount || 0,
   );
 
   const balance = depositsTotal - investmentTotal - expensesTotal;
@@ -74,15 +77,15 @@ export default async function getDashboard(month: string) {
   );
 
   const typesPercentage: TransactionPercentePerType = {
-    [TransactionType.DEPOSIT]: Math.round(
-      (Number(depositsTotal || 0) / Number(transactionTotal)) * 100,
-    ),
-    [TransactionType.EXPENSE]: Math.round(
-      (Number(expensesTotal || 0) / Number(transactionTotal)) * 100,
-    ),
-    [TransactionType.INVESTMENT]: Math.round(
-      (Number(investmentTotal || 0) / Number(transactionTotal)) * 100,
-    ),
+    [TransactionType.DEPOSIT]: transactionTotal
+      ? Math.round((depositsTotal / transactionTotal) * 100)
+      : 0,
+    [TransactionType.EXPENSE]: transactionTotal
+      ? Math.round((expensesTotal / transactionTotal) * 100)
+      : 0,
+    [TransactionType.INVESTMENT]: transactionTotal
+      ? Math.round((investmentTotal / transactionTotal) * 100)
+      : 0,
   };
 
   const totalExpensePerCategory: TotalExpensePerCategory[] = (
@@ -96,13 +99,16 @@ export default async function getDashboard(month: string) {
         amount: true,
       },
     })
-  ).map((category) => ({
-    category: category.category,
-    totalAmount: Number(category._sum?.amount),
-    percentageOfTotal: Math.round(
-      (Number(category._sum?.amount) / Number(expensesTotal)) * 100,
-    ),
-  }));
+  ).map((category) => {
+    const totalAmount = Number(category._sum?.amount || 0);
+    return {
+      category: category.category,
+      totalAmount,
+      percentageOfTotal: expensesTotal
+        ? Math.round((totalAmount / expensesTotal) * 100)
+        : 0,
+    };
+  });
 
   const lastTransactions = await db.transaction.findMany({
     where,

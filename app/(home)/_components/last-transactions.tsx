@@ -51,10 +51,7 @@ export default function LastTransacations({
               key={transaction.id}
               className="flex items-center justify-between"
             >
-              <div
-                key={transaction.id}
-                className="flex items-center gap-3 bg-white bg-opacity-[3%]"
-              >
+              <div key={transaction.id} className="flex items-center gap-3">
                 <div className="rounded-lg bg-white bg-opacity-[3%] p-3">
                   <Image
                     src={

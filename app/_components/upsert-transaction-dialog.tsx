@@ -10,13 +10,6 @@ import {
   TransactionPaymentMethod,
   TransactionType,
 } from "@prisma/client";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@radix-ui/react-select";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { MoneyInput } from "./money-input";
@@ -41,6 +34,13 @@ import {
   FormMessage,
 } from "./ui/form";
 import { Input } from "./ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 type FormSchema = z.infer<typeof formSchema>;
 
