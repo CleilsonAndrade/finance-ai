@@ -1,6 +1,7 @@
 import Navbar from "@/_components/navbar";
 import { Badge } from "@/_components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/_components/ui/card";
+import getCurrentMonthTransactions from "@/_data/get-current-month-transactions";
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { CheckIcon, XIcon } from "lucide-react";
 import { redirect } from "next/navigation";
@@ -14,6 +15,9 @@ export default async function SubscriptionPage() {
   }
 
   const user = await clerkClient().users.getUser(userId);
+
+  const currentMonthTransaction = getCurrentMonthTransactions();
+
   const hasPremiumPlan = user?.publicMetadata.subscriptionPlan === "premium";
 
   return (
@@ -36,7 +40,9 @@ export default async function SubscriptionPage() {
             <CardContent className="space-y-6 py-8">
               <div className="items-cneter flex gap-2">
                 <CheckIcon className="text-primary" />
-                <p>Apenas 10 transações por mês (7/10)</p>
+                <p>
+                  Apenas 10 transações por mês ({currentMonthTransaction}/10)
+                </p>
               </div>
               <div className="items-cneter flex gap-2">
                 <XIcon />

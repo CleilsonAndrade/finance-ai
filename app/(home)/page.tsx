@@ -1,4 +1,5 @@
 import Navbar from "@/_components/navbar";
+import canUserAddTransaction from "@/_data/can-user-add-transaction";
 import getDashboard from "@/_data/get-dashboard";
 import { auth } from "@clerk/nextjs/server";
 import { isMatch } from "date-fns";
@@ -30,7 +31,7 @@ export default async function Home({ searchParams: { month } }: HomeProps) {
 
   const dashboard = await getDashboard(month);
 
-  console.log(dashboard);
+  const userCanAddTransaction = await canUserAddTransaction();
 
   return (
     <>
@@ -42,7 +43,11 @@ export default async function Home({ searchParams: { month } }: HomeProps) {
         </div>
         <div className="grid grid-cols-[2fr,1fr] gap-6 overflow-hidden">
           <div className="flex flex-col gap-6 overflow-hidden">
-            <SummaryCards month={month} {...dashboard} />
+            <SummaryCards
+              month={month}
+              {...dashboard}
+              userCanAddTransaction={userCanAddTransaction}
+            />
             <div className="grid grid-cols-3 grid-rows-1 gap-6">
               <TransactionsPieChart {...dashboard} />
               <ExpensesPerCategory
