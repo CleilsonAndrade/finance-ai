@@ -1,7 +1,7 @@
 import Navbar from "@/_components/navbar";
 import canUserAddTransaction from "@/_data/can-user-add-transaction";
 import getDashboard from "@/_data/get-dashboard";
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { isMatch } from "date-fns";
 import { redirect } from "next/navigation";
 import AiReportButton from "./_components/ai-report-button";
@@ -34,6 +34,8 @@ export default async function Home({ searchParams: { month } }: HomeProps) {
 
   const userCanAddTransaction = await canUserAddTransaction();
 
+  const user = await clerkClient.users.getUser(userId);
+
   return (
     <>
       <Navbar />
@@ -41,7 +43,12 @@ export default async function Home({ searchParams: { month } }: HomeProps) {
         <div className="flex justify-between">
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <div className="flex items-center gap-3">
-            <AiReportButton month={month} />
+            <AiReportButton
+              month={month}
+              hasPremiumPlan={
+                user.publicMetadata.subscriptionPlan === "premium"
+              }
+            />
             <TimeSelect />
           </div>
         </div>
