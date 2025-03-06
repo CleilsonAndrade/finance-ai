@@ -32,7 +32,7 @@ export default function AcquirePlanButton() {
   if (hasPremiumPlan) {
     return (
       <Button
-        className="w-full rounded-full font-bold"
+        className="w-full rounded-full"
         onClick={handleAcquirePlanClick}
         variant="link"
       >
@@ -48,10 +48,7 @@ export default function AcquirePlanButton() {
   }
 
   return (
-    <Button
-      className="w-full rounded-full font-bold"
-      onClick={handleAcquirePlanClick}
-    >
+    <Button className="w-full rounded-full" onClick={handleAcquirePlanClick}>
       Adquirir plano
     </Button>
   );

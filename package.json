@@ -31,10 +31,12 @@
     "git-commit-msg-linter": "5.0.8",
     "lucide-react": "^0.476.0",
     "next": "14.2.24",
+    "openai": "4.71.1",
     "react": "^18",
     "react-day-picker": "8.10.1",
     "react-dom": "^18",
     "react-hook-form": "^7.54.2",
+    "react-markdown": "9.0.1",
     "react-number-format": "5.4.2",
     "recharts": "^2.15.1",
     "stripe": "17.3.1",
@@ -43,6 +45,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "0.0.0-insiders.0339c42",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
