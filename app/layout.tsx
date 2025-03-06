@@ -2,6 +2,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
+import { Toaster } from "./_components/ui/sonner";
 import "./globals.css";
 
 const mulish = Mulish({
@@ -29,6 +30,7 @@ export default function RootLayout({
           <div className="flex h-full flex-col overflow-hidden">{children}</div>
         </body>
       </ClerkProvider>
+      <Toaster />
     </html>
   );
 }
