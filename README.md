@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <h1>finance a.i</h1>
+  <p>finance a.i é uma plataforma de gestão financeira com insights gerados por IA para monitorar suas movimentações, e oferecendo análises preditivas e relatórios automatizados para otimização de processos financeiros.</p>
+  <img src="./design/desktop.png" alt="Logo" width="800">
+</div>
 
-## Getting Started
+# 📒 Índice
+* [Descrição](#descrição)
+* [Requisitos Funcionais](#requisitos)
+  * [Features](#features)
+* [Tecnologias](#tecnologias)
+* [Design](#design)
+  * [Cores](#cores)
+  * [Fontes](#fontes)
+  * [Ícones](#ícones)
+* [Instalação](#instalação)
+* [Licença](#licença)
 
-First, run the development server:
+# 📃 <span id="descrição">Descrição</span>
+finance a.i é uma plataforma de gestão financeira com insights gerados por IA para monitorar suas movimentações, e oferecendo análises preditivas e relatórios automatizados para otimização de processos financeiros. Permitindo assinatura, com planos, aplicação visualização com um dashboard resumido, com gráficos, gastos por categoria, ultimas transações, filtros e saldo disponível. Aplicação desenvolvida utilizando a API tecnologia [**TypeScript**](https://www.typescriptlang.org/), com [**Next.js**](https://nextjs.org/) Framework React com renderização híbrida (SSR/SSG), [**Prisma Orm**](https://www.prisma.io/) moderno para TypeScript com type-safety, [**Stripe**](https://stripe.com/) - Gateway de pagamento completo.
 
+# 📌 <span id="requisitos">Requisitos Funcionais</span>
+- [x] Sistema completo de autenticação e gerenciamento de usuários<br>
+- [x] Salva os dados do usuário<br>
+- [x] Assinatura<br>
+- [x] Adição de transação<br>
+- [x] Categorização de transação<br>
+
+## Features
+- [x] Dashboard com gráficos<br>
+- [x] Filtragem por categoria<br>
+- [x] Relatório com insights baseado machine learning<br>
+- [x] Interface Moderna<br>
+
+# 💻 <span id="tecnologias">Tecnologias</span>
+- **TypeScript**
+- **Next.js**
+- **Prisma Orm**
+- **MySQL**
+- **Clerk**
+- **zod**
+- **Stripe**
+- **openai**
+- **shad.cn**
+- **radix**
+- **tailwind**
+- **lucide-react**
+
+# 🎨 <span id="design">Design</span>
+- O modelo final para versão desktop e mobile está disponível na pasta `./design`
+
+- <span id="cores">Cores<br></span>
+  * #0C0A09<br>
+  * #F2F2F2<br>
+  * #55B02E<br>
+
+- <span id="fontes">Fontes<br></span>
+  * Arial, Helvetica, sans-serif
+
+- <span id="ícones">Ícones<br></span>
+  * lucide-react
+
+# 🚀 <span id="instalação">Instalação</span>
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  # Clone este repositório:
+  $ git clone https://github.com/CleilsonAndrade/finance-ai.git
+  $ cd ./finance-ai
+
+   # Instalar as dependências:
+  $ yarn install
+
+  # Gerar o código TypeScript com base nos modelos do Prisma:
+  $ npx prisma generate
+
+  # Aplicar migrações ao banco de dados:
+  $ npx prisma migrate dev
+
+  # Executar:
+  $ yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 📝 <span id="licença">Licença</span>
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<p align="center">
+  Feito com 💜 by CleilsonAndrade
+</p>
